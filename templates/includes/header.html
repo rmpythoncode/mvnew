@@ -1,0 +1,31 @@
+{% load static %}
+<!-- Header Area -->
+<div class="header-area" id="headerArea">
+  <div class="container h-100 d-flex align-items-center justify-content-between d-flex rtl-flex-d-row-r">
+    <!-- Logo Wrapper -->
+    <div class="logo-wrapper"><a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" width="50" alt=""></a></div>
+    <div class="navbar-logo-container d-flex align-items-center">    
+    <!-- Lojas -->
+    <div class="container-flex text-center">
+      <a href="{% url 'marketplace' %}"><button class="btn btn-danger btn__lojas"><strong>LOJAS</strong></button></a>
+    </div> 
+      <!-- Navbar Toggler -->
+      <div class="suha-navbar-toggler ms-2" data-bs-toggle="offcanvas" data-bs-target="#suhaOffcanvas" aria-controls="suhaOffcanvas">
+        <div><span></span><span></span><span></span></div>          
+      </div>
+
+      {% if user.is_authenticated %}
+      <!-- Cart Icon -->
+      <div class="header__icons">
+        <div class="shopping__cart__icon btn">
+          <a href="{% url 'cart_detail' %}"><span class="material-symbols-outlined position-relative"><strong>shopping_cart</strong></span></a>
+          <span id="cart_counter" class="top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cart_count }}
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </div>
+      </div> 
+      {% endif %}
+    </div>       
+  </div>
+</div>
